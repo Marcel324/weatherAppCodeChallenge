@@ -15,15 +15,12 @@ private init() {}
 
 func getData(endPoint: String, callback: @escaping (Data?) -> Void) {
     guard let url = URL(string: endPoint) else { return }
-    var request = URLRequest(url: url)
-    request.httpMethod = "GET"
-
-//    request.addValue("Accept", forHTTPHeaderField: "application/json")
+    let request = URLRequest(url: url)
     
     let session = URLSession(configuration: URLSessionConfiguration.default)
     session.dataTask(with: request) { (data: Data?, response: URLResponse?, error: Error?) in
         if error != nil {
-            print("Error during session: \(error)")
+            print("Error during session: \(String(describing: error))")
         }
         guard let validData = data else { return }
         callback(validData)

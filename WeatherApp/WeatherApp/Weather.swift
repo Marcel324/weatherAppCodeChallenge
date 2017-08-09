@@ -12,17 +12,27 @@ class Weather {
     
     var minTempF: Int
     var maxTempF: Int
+    var minTempC: Int
+    var maxTempC: Int
     var date: String
+    var icon: String
     
     init?(from: [String : Any]) {
         
         guard let minTempFahrenheit =  from["minTempF"] as? Int,
         let maxTempFahrenheit = from["maxTempF"] as? Int,
-        let date = from["dateTimeISO"] as? String else {return nil}
+        let minTempCelcius = from["minTempC"] as? Int,
+        let maxTempCelcius = from["maxTempC"] as? Int,
+        let date = from["dateTimeISO"] as? String,
+        let icon = from["icon"] as? String
+        else {return nil}
         
         self.minTempF = minTempFahrenheit
         self.maxTempF = maxTempFahrenheit
+        self.minTempC = minTempCelcius
+        self.maxTempC = maxTempCelcius
         self.date = date
+        self.icon = icon
     }
     
     static func getWeather(from dict:[String:Any]) -> [Weather] {

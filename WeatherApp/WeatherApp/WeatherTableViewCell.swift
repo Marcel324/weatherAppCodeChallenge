@@ -17,7 +17,6 @@ class WeatherTableViewCell: UITableViewCell {
     @IBOutlet weak var lowTempLabel: UILabel!
     
     @IBOutlet weak var weatherIconImage: UIImageView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
